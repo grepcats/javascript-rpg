@@ -9,3 +9,13 @@ describe('Character', function() {
     expect(newChar.hp).toEqual(charHp);
   });
 });
+
+describe('Monk', function() {
+  it('creates a Monk character with name etc', function() {
+    let charName = "jack";
+    let newMonk = new Monk(charName);
+    expect(newMonk.name).toEqual(charName);
+    expect(newMonk.hp).toEqual(20);
+    expect(newMonk.level).toEqual(1);
+  });
+});
