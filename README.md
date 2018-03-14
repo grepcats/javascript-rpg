@@ -37,7 +37,7 @@ Classes
 	MP
 	Level
 	XP
-	Location
+	Location (game?)
 	Items (array?)
 	stats
 		streng
