@@ -1,3 +1,5 @@
+import { Character } from './character.js';
+
 export class Battle {
   constructor(hero, enemy) {
     this.hero = hero;
