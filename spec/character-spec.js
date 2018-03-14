@@ -12,12 +12,26 @@ describe('Character', function() {
 });
 
 describe('Monk', function() {
+  let hero;
+  let enemy;
+
+  beforeEach(function() {
+    hero = new Monk("Sal");
+    enemy = new Monk("Jack");
+  });
+
   it('creates a Monk character with name etc', function() {
-    let monkName = "jack";
-    let newMonk = new Monk(monkName);
-    expect(newMonk.name).toEqual(monkName);
-    expect(newMonk.hp).toEqual(30);
-    expect(newMonk.level).toEqual(1);
+    let monkName = "Sal";
+
+    expect(hero.name).toEqual(monkName);
+    expect(hero.hp).toEqual(30);
+    expect(hero.level).toEqual(1);
+  });
+
+  it('uses attack, drains enemy hp based on strength of character', function() {
+    let initialHP = enemy.hp;
+    hero.attack(enemy);
+    expect(enemy.hp).toEqual(initialHP - hero.str);
   });
 });
 
@@ -37,10 +51,14 @@ describe('Battle', function() {
     expect(battle.turn).toEqual(true);
   });
 
-  it('uses attack, drains enemy hp based on strength of character', function() {
+  it('attacks affect battle player objects', function() {
     let battle = new Battle(hero, enemy);
-    let initialHP = enemy.hp;
-    hero.attack(enemy);
-    expect(enemy.hp).toEqual(initialHP - hero.str);
+    battle.hero.attack(battle.enemy);
+    expect(battle.hero.hp).toEqual(30);
+    expect(battle.enemy.hp).toEqual(27);
   });
+
+
+
+
 });
