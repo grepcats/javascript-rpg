@@ -15,7 +15,14 @@ export class Character {
 export class Monk extends Character {
   constructor(monkName) {
     super({name: monkName, hp: 30, mp: 10, xp: 0, level: 1, str: 3, dex: 5, con: 5, int: 5});
+    this.attackName = "strike"
+    // this.specialName = "strike"
+    // this.attackName = "strike"
   };
+
+  attack(enemy) {
+    enemy.hp -= this.str;
+  }
 }
 
 export class Sorcerer extends Character {

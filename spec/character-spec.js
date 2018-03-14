@@ -22,12 +22,25 @@ describe('Monk', function() {
 });
 
 describe('Battle', function() {
+  let hero;
+  let enemy;
+
+  beforeEach(function() {
+    hero = new Monk("Sal");
+    enemy = new Monk("Jack");
+  });
+
   it('creates a Battle object given combatants', function() {
-    let hero = new Monk("Sal");
-    let enemy = new Monk("Jack");
     let battle = new Battle(hero, enemy);
     expect(battle.hero).toEqual(hero);
     expect(battle.enemy).toEqual(enemy);
     expect(battle.turn).toEqual(true);
+  });
+
+  it('uses attack, drains enemy hp based on strength of character', function() {
+    let battle = new Battle(hero, enemy);
+    let initialHP = enemy.hp;
+    hero.attack(enemy);
+    expect(enemy.hp).toEqual(initialHP - hero.str);
   });
 });

@@ -3,5 +3,7 @@ export class Battle {
     this.hero = hero;
     this.enemy = enemy;
     this.turn = (this.hero.dex >= this.enemy.dex);
+    this.battleOn = true;
   }
+
 }
