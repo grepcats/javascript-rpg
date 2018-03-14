@@ -11,6 +11,30 @@ export class Character {
     this.int = int;
     this.money = money;
   }
+  // let desiredLevel = Math.floor(Math.random() * 2 + this.hero.level);
+  // while (this.enemy.level < desiredLevel) {
+  //   this.enemy.xp += this.enemy.level * 10;
+  //   this.enemy.updateStats();
+  // }
+  updateLevel() {
+    while (this.xp >= this.level * 10) {
+      this.level += 1;
+      this.str += 1;
+      this.dex += 1;
+      this.con += 1;
+      this.int += 1;
+      this.xp -= this.level * 10;
+    }
+  }
+  setLevel(desiredLevel) {
+    while (this.level < desiredLevel) {
+      this.level += 1;
+      this.str += 1;
+      this.dex += 1;
+      this.con += 1;
+      this.int += 1;
+    }
+  }
 }
 
 export class Monk extends Character {

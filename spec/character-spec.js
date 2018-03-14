@@ -32,4 +32,14 @@ describe('Monk', function() {
     hero.attack(enemy);
     expect(enemy.hp).toEqual(initialHP - hero.str);
   });
+
+  it('sets character level and stats', function() {
+    //check initial stregth for enemy
+    //do set level which updates stats
+    //strength should now equal inital strength + difference betweeen oroginal level & set level. 5.
+    let initialHeroStr = enemy.str;
+    enemy.setLevel(6);
+    expect(enemy.str).toEqual(initialHeroStr + 5);
+    expect(enemy.level).toEqual(6);
+  });
 });

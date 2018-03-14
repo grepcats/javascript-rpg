@@ -1,30 +1,33 @@
-import { Character, Monk } from '../src/character.js';
-import { Battle } from '../src/battle.js';
+import { Character, Monk, Sorcerer, Rogue, Fighter } from './character.js';
+import { Battle } from './battle.js';
+
 
 let hero = new Monk("Sal");
 let enemy = new Monk("Jack");
 
-let currentBattle = new Battle(hero, enemy);
+let battle = new Battle(hero, enemy);
 
-while (currentBattle.battleOn) {
+while (battle.battleOn) {
 
-  if (currentBattle.turn) {
-    currentBattle.hero.attack(currentBattle.enemy);
-    //console.log("enemy hp: " + currentBattle.enemy.hp);
-    currentBattle.turn = false;
-    if (currentBattle.enemy.hp <= 0) {
-      currentBattle.battleOn = false;
+  if (battle.turn) {
+    battle.hero.attack(battle.enemy);
+    //console.log("enemy hp: " + battle.enemy.hp);
+    battle.turn = false;
+    if (battle.enemy.hp <= 0) {
+      battle.battleOn = false;
       //you win!
-      currentBattle.hero.money += Math.random() * 10;
-      currentBattle.hero.xp += Math.random() * 10;
+      battle.hero.money += Math.random() * 10;
+      battle.hero.xp += Math.random() * 10 * battle.enemy.level;
+      battle.hero.updateLevel();
+      //updatestats
     }
   } else {
 
-    currentBattle.enemy.attack(currentBattle.hero)
-    //console.log("hero hp: " + currentBattle.hero.hp);
-    currentBattle.turn = true;
-    if (currentBattle.hero.hp <= 0) {
-      currentBattle.battleOn = false;
+    battle.enemy.attack(battle.hero)
+    //console.log("hero hp: " + battle.hero.hp);
+    battle.turn = true;
+    if (battle.hero.hp <= 0) {
+      battle.battleOn = false;
     }
   }
 }
